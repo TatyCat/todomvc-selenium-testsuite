@@ -1,7 +1,31 @@
-import unittest
+from selenium.webdriver.common.by import By
 from selenium import webdriver
+from time import sleep
+import unittest
 
+class ToDoMVCTest(unittest.TestCase):
+    def setUP(self):    
+        browser = webdriver.Firefox()
+        browser.get('https://todomvc.com/examples/angular2/')
+        
+    #Add/type text in input box (not disabled)
+    def test_text_in_input_box(self):
 
-browser = webdriver.Chrome()
-browser.get('https://todomvc.com/examples/angular2/')
+    #can submit added text to create a checklist item
+    def test_submit_text():
+
+    #checklist item can be marked complete only by toggle: body > todo-app > section > section > ul > li > div > input
+    def test_mark_complete():
+
+    #item marked complete has strikethrough on text && is greyed out
+    def test_item_shows_complete():
+
+    #refreshng the page should still leave the same incomplete items displayng prior to refresh
+    def test_save_state_on_refresh():
+
+    def tEARDOWN(self):
+        self.driver.quit()
+
+if __name__ == '__main__':
+    unittest.main()
 

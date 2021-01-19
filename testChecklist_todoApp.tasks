@@ -1,34 +1,26 @@
 todos:
 https://todomvc.com/examples/angular2/
-    home pg:
-        ☐ the top logo displays @ body > todo-app > section > header > h1 OR .header > h1:nth-child(1)
-        ☐ input box displays - body > todo-app > section > header > input
-        ☐ input box is empty/clear upon pg load (body > todo-app > section > header != CHILDREN (body > todo-app > section > section))
-    todo section:                
-        basic todo section function:
-            ☐ can add/type text in input box (not disabled)
-            ☐ can submit added text to create a checklist item
-            ☐ checklist item can be marked complete only by toggle: body > todo-app > section > section > ul > li > div > input
-            ☐ item marked complete has strikethrough on text && is greyed out
-            ☐ refreshng the page should still leave the same incomplete items displayng prior to refresh
+  
+todo section:                
+    basic todo section function:
+        ☐ can add/type text in input box (not disabled)
+        ☐ can submit added text to create a checklist item
+        ☐ checklist item can be marked complete only by toggle: body > todo-app > section > section > ul > li > div > input
+        ☐ item marked complete has strikethrough on text && is greyed out
+        ☐ refreshng the page should still leave the same incomplete items displayng prior to refresh
 
-        intermediate todo section function: 
-            ☐ 'X item(s) left' section updates upon completed or incomplete amount of items
-            ☐ accurate number of 'item(s) left' is displayed 
-            ☐ undo completion toggle & item's strikethrough is removed after it's no longer marked as complete. 
-            ☐ 'Clear completed' button appears in lefthand corner once a todo has been created. 
-                body > todo-app > section > footer > button
-            ☐ 'clear completed' removes all items marked and leaves the incomplete items
-            ☐ hovering on item shows the X to remove item.
-            ☐ clicking the 'X' removes item from page/checklist 
-            ☐ removing an item (from clicking the 'X', updates 'items left'
-        
-        text edit todo section function:
-            ☐ double clicking the input allows for edit.
-            ☐ edits save and display 
+    intermediate todo section function: 
+        ☐ 'X item(s) left' section updates upon completed or incomplete amount of items
+        ☐ accurate number of 'item(s) left' is displayed 
+        ☐ undo completion toggle & item's strikethrough is removed after it's no longer marked as complete. 
+        ☐ 'Clear completed' button appears in lefthand corner once a todo has been created. 
+            body > todo-app > section > footer > button
+        ☐ 'clear completed' removes all items marked and leaves the incomplete items
+        ☐ hovering on item shows the X to remove item.
+        ☐ clicking the 'X' removes item from page/checklist 
+        ☐ removing an item (from clicking the 'X', updates 'items left'
+    
+    text edit todo section function:
+        ☐ double clicking the input allows for edit.
+        ☐ edits save and display 
 
-
-
-?? - what is too meta for automation? manually i would check that the text that is displayed as expected. 
-
-        
