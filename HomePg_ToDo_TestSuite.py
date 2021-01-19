@@ -13,6 +13,9 @@ class ToDoMVCTest(unittest.TestCase):
         
     #Add/type text in input box (not disabled)
     def test_text_in_input_box(self):
+        # locate input box
+        # add characters to input box 
+        # 
 
     #can submit added text to create a checklist item
     def test_submit_text():
@@ -28,7 +31,7 @@ class ToDoMVCTest(unittest.TestCase):
     
     @classmethod
     def tEARDOWN(cls):
-        # self.driver.quit()
+        cls.driver.quit()
 
 if __name__ == '__main__':
     unittest.main()
