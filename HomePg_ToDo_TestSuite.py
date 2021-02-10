@@ -1,20 +1,30 @@
-from selenium.webdriver.common.by import By
-from selenium import webdriver
-from time import sleep
 import unittest
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from time import sleep
 
 class ToDoMVCTest(unittest.TestCase):
+
     @classmethod
-    def setUP(self):    
-        self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(15)
-        self.driver.maximize_window
+    def setUpClass(self):    
+        self.driver = webdriver.Chrome()
+        # self.driver.implicitly_wait(15)
         self.driver.get('https://todomvc.com/examples/angular2/')
+        print('----setupclass done!')
         
     #Add/type text in input box (not disabled)
     def test_text_in_input_box(self):
-        # value
-        self.findElement(By.xpath("/html/body/todo-app/section/header/input")).sendKeys('test text')
+        input_todo = self.driver 
+        
+        input_todo.find_element_by_css_selector('input.new-todo')
+        input_todo.sendKeys('test text')
+        input_todo.submit()
+            # assert True
+
+        print('----test_text_in_input_box done!')
+
+
+
 
 
     #can submit added text to create a checklist item
@@ -32,8 +42,9 @@ class ToDoMVCTest(unittest.TestCase):
 
     
     # @classmethod
-    # def tEARDOWN(cls):
-        # cls.driver.quit()
+    # def tearDownClass(cls):
+    #     # cls.driver.quit()
+    #     print ("yea")
 
 if __name__ == '__main__':
     unittest.main()
