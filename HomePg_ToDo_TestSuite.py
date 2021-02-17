@@ -8,20 +8,19 @@ class ToDoMVCTest(unittest.TestCase):
     @classmethod
     def setUpClass(self):    
         self.driver = webdriver.Chrome()
-        # self.driver.implicitly_wait(15)
         self.driver.get('https://todomvc.com/examples/angular2/')
+        self.driver.implicitly_wait(15)
+
         print('----setupclass done!')
         
     #Add/type text in input box (not disabled)
     def test_text_in_input_box(self):
-        input_todo = self.driver 
-        
-        input_todo.find_element_by_css_selector('input.new-todo')
-        input_todo.sendKeys('test text')
-        input_todo.submit()
+        input_todo = self.driver.find_element_by_xpath("/html/body/todo-app/section/header/input")
+        # input_todo.sendKeys('test text')
+        # input_todo.submit()
             # assert True
 
-        print('----test_text_in_input_box done!')
+        print('----test_text_in_input_box done!', self)
 
 
 
