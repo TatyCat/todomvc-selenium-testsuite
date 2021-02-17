@@ -3,6 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+
 from time import sleep
 
 class ToDoMVCTest(unittest.TestCase):
@@ -17,19 +19,12 @@ class ToDoMVCTest(unittest.TestCase):
             element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/todo-app/section/header/input")))
         except:
             self.driver.quit()
-        # self.driver.implicitly_wait(15)
-
-        print('----setupclass done!')
         
     #Add/type text in input box (not disabled)
     def test_text_in_input_box(self):
         input_todo = self.driver.find_element_by_xpath("/html/body/todo-app/section/header/input")
-        # input_todo.sendKeys('test text')
-        # input_todo.submit()
-            # assert True
-
-        print('----test_text_in_input_box done!', self)
-
+        input_todo.send_keys('test text')
+        input_todo.send_keys(Keys.ENTER)
 
 
 
@@ -51,8 +46,15 @@ class ToDoMVCTest(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         self.driver.quit()
-        print ("yea")
+        print ("We did it Joe...")
 
 if __name__ == '__main__':
     unittest.main()
 
+
+
+# Refactor: 
+
+
+#TODO
+# after one () hour of troubleshooting, commit & branch & Ben 
