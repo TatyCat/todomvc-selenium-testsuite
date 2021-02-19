@@ -3,8 +3,8 @@ https://todomvc.com/examples/angular2/
   
 todo section:                
     basic todo section function:
-        ☐ can add/type text in input box (not disabled)
-        ☐ can submit added text to create a checklist item
+        ✔ can add/type text in input box (not disabled) @done (2/17/2021, 7:10:23 PM)
+        ✔ can submit added text to create a checklist item @done (2/17/2021, 7:10:26 PM)
         ☐ checklist item can be marked complete only by toggle: body > todo-app > section > section > ul > li > div > input
         ☐ item marked complete has strikethrough on text && is greyed out
         ☐ refreshng the page should still leave the same incomplete items displayng prior to refresh
