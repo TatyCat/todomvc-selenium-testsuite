@@ -59,8 +59,10 @@ class ToDoMVCTest(unittest.TestCase):
     #checklist item can be marked complete only by toggle:
     def test_mark_complete(self):
             # find toggle, mark toggle, check that it shows as complete 
-        # timeout = 10
-        # try:
+        timeout = 15
+        self.driver.implicitly_wait(15)	
+
+        try:
             # attemtps to locate:
             # toggle_check = WebDriverWait(self.driver,timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, "li#toggle" )))
             # toggle_check = WebDriverWait(self.driver,timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, "toggle" )))
@@ -68,8 +70,8 @@ class ToDoMVCTest(unittest.TestCase):
             # toggle_check = WebDriverWait(self.driver,timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input#toggle" )))
             # toggle_check = WebDriverWait(self.driver,timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input#toggle" )))
             # toggle_check = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input.toggle")))
-            # toggle_check = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input:contains('test text')")))
-
+            # toggle_check = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input:contains('test text')")))
+            toggle_check2 = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.XPATH, "/html/body/todo-app/section/section/ul/li/div/input")))
 
 
             # todo-app > section > section > ul > li > div > input / css=tag#id
@@ -77,8 +79,8 @@ class ToDoMVCTest(unittest.TestCase):
 
 
             # toggle_check.click()
-        # except TimeoutException:
-        #     print("Failed to locate toggle checkbox")
+        except TimeoutException:
+            print("Failed to locate toggle checkbox")
 
         # toggle_check.click()
         # if toggle_check.is_selected():
