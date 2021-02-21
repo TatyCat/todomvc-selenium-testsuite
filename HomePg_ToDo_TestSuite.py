@@ -60,7 +60,6 @@ class ToDoMVCTest(unittest.TestCase):
     def test_mark_complete(self):
             # find toggle, mark toggle, check that it shows as complete 
         timeout = 15
-        self.driver.implicitly_wait(15)	
 
         try:
             # attemtps to locate:
