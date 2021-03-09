@@ -70,7 +70,7 @@ class ToDoMVCTest(unittest.TestCase):
             # toggle_check = WebDriverWait(self.driver,timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input#toggle" )))
             # toggle_check = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input.toggle")))
             # toggle_check = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, "input:contains('test text')")))
-            toggle_check2 = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.XPATH, "/html/body/todo-app/section/section/ul/li/div/input")))
+            toggle_check = WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.XPATH, "/html/body/todo-app/section/section/ul/li/div/input")))
 
 
             # todo-app > section > section > ul > li > div > input / css=tag#id
