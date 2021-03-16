@@ -9,5 +9,5 @@ Solution: Update/Install Selenium - Webdriver
 Pro tip: <!-- *history* shows last used commands-->
 
 To run independent methods/test:
- python HomePg_ToDo_TestSuite.py ToDoMVCTest.test_mark_complete 
+    python HomePg_ToDo_TestSuite.py ToDoMVCTest.test_mark_complete 
 
