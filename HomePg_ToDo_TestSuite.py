@@ -31,6 +31,7 @@ class ToDoMVCTest(unittest.TestCase):
         self.driver.implicitly_wait(15)	
         input_todo.send_keys('test text 2')
         input_todo.send_keys(Keys.ENTER)
+        #todo text found in the loction.  ASSERTequals, one for each li 
 
 
         #checklist item can be marked complete only by toggle:
@@ -52,7 +53,7 @@ class ToDoMVCTest(unittest.TestCase):
     
 
     
-    # @classmethod
+    
     def tearDown(self):
         self.driver.implicitly_wait(5)	
         self.driver.quit()
