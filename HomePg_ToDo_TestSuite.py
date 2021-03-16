@@ -41,11 +41,15 @@ class ToDoMVCTest(unittest.TestCase):
         input_todo.send_keys(Keys.ENTER)
 
         toggle_check = self.driver.find_element_by_xpath("/html/body/todo-app/section/section/ul/li/div/input")
+
+        #verify not selected
+        self.assertTrue(not toggle_check.is_selected())
+        
         toggle_check.click()
         
-        if toggle_check.is_selected():
-            print('test_mark_complete SELECTED')
-
+        #verify toggle is selected
+        self.assertTrue(toggle_check.is_selected())
+    
 
     
     # @classmethod
