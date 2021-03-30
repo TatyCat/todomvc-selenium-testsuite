@@ -51,17 +51,22 @@ class ToDoMVCTest(unittest.TestCase):
         #verify toggle is selected
         self.assertTrue(toggle_check.is_selected())
     
-
+# 3/29
     def test_completion_style_format(self):
-        input_todo = self.driver.find_element_by_xpath("/html/body/todo-app/section/header/input")
+        input_todo = self.driver.find_element_by_class_name("new-todo")
         input_todo.send_keys('test text')
         input_todo.send_keys(Keys.ENTER)
         mark_complete = self.driver.find_element_by_xpath("/html/body/todo-app/section/section/ul/li/div/input")
         mark_complete.click()
         #check for item by 'complete' class name
         completed_li = self.driver.find_element_by_class_name("completed")
-
+        self.assertTrue(completed_li)
         
+
+    def state_refresh(self):
+        input_todo = self.driver.find_element_by_class_name("new-todo")
+        
+
     
 # ASSERTequals, one for each li 
 
