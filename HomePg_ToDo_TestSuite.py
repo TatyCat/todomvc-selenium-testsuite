@@ -16,8 +16,8 @@ class ToDoMVCTest(unittest.TestCase):
         self.driver = webdriver.Chrome()
         self.driver.get('https://todomvc.com/examples/angular2/')
         
-        #Wait until input box is available in DOM tree. This was a previous Error/Break
-        # https://selenium-python.readthedocs.io/waits.html#explicit-waits
+        #Wait until input box is available in DOM tree.
+            # https://selenium-python.readthedocs.io/waits.html#explicit-waits
         try:
             element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/todo-app/section/header/input")))
         except:
@@ -31,10 +31,10 @@ class ToDoMVCTest(unittest.TestCase):
         self.driver.implicitly_wait(15)	
         input_todo.send_keys('test text 2')
         input_todo.send_keys(Keys.ENTER)
-        #todo text found in the loction.  ASSERTequals, one for each li 
+        #todo: text found in the loction.
 
 
-        #checklist item can be marked complete only by toggle:
+        #checklist item can be marked complete by toggle:
     def test_mark_complete(self):
             # find toggle, mark toggle, check that it shows as complete 
         input_todo = self.driver.find_element_by_xpath("/html/body/todo-app/section/header/input")
@@ -52,11 +52,25 @@ class ToDoMVCTest(unittest.TestCase):
         self.assertTrue(toggle_check.is_selected())
     
 
+    def test_completion_style_format(self):
+        input_todo = self.driver.find_element_by_xpath("/html/body/todo-app/section/header/input")
+        input_todo.send_keys('test text')
+        input_todo.send_keys(Keys.ENTER)
+        mark_complete = self.driver.find_element_by_xpath("/html/body/todo-app/section/section/ul/li/div/input")
+        mark_complete.click()
+        #check for item by 'complete' class name
+        completed_li = self.driver.find_element_by_class_name("completed")
+
+        
     
-    
-    def tearDown(self):
-        self.driver.implicitly_wait(5)	
-        self.driver.quit()
+# ASSERTequals, one for each li 
+
+
+
+# WHY DOES CHROME CLOSE ON ITS OWN EVEN WHEN TEARDOWN ISN'T THERE? 
+    # def tearDown(self):
+        # self.driver.implicitly_wait(15)	
+        # self.driver.quit()
 
 if __name__ == '__main__':
     unittest.main()
@@ -69,5 +83,4 @@ if __name__ == '__main__':
 #REMINDER
 # after one (1) hour of troubleshooting, branch, commit & @ Ben 
 # """&& @ BEN, I keep receiving this error: 
-
 #   """

@@ -1,4 +1,5 @@
 To ACTIVATE PYTHON ENV:
+    cd '/Documents/Code.Eat.Sleep/QA_Scripts/todoApp_Test'
     source todo-env/bin/activate  
 
 Error: "This version of ChromeDriver only supports Chrome version 87"
