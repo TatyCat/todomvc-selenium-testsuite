@@ -7,7 +7,7 @@ todo section:
         ✔ can submit added text to create a checklist item @done (2/17/2021, 7:10:26 PM)
         ✔ checklist item can be marked complete only by toggle: body > todo-app > section > section > ul > li > div > input @done (3/29/2021, 9:19:27 PM)
         ✔ item marked complete has strikethrough on text && is greyed out @done (3/29/2021, 10:11:56 PM)
-        ☐ refreshing the page should still leave the same incomplete items displayng prior to refresh
+        ✔ refreshing the page should still leave the same incomplete items displayng prior to refresh @done (4/5/2021, 10:31:12 PM)
 
     intermediate todo section function: 
         ☐ 'X item(s) left' section updates upon completed or incomplete amount of items

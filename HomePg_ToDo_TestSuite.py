@@ -51,10 +51,9 @@ class ToDoMVCTest(unittest.TestCase):
         #verify toggle is selected
         self.assertTrue(toggle_check.is_selected())
     
-# 3/29
     def test_completion_style_format(self):
         input_todo = self.driver.find_element_by_class_name("new-todo")
-        input_todo.send_keys('test text')
+        input_todo.send_keys('test completion text')
         input_todo.send_keys(Keys.ENTER)
         mark_complete = self.driver.find_element_by_xpath("/html/body/todo-app/section/section/ul/li/div/input")
         mark_complete.click()
@@ -65,17 +64,37 @@ class ToDoMVCTest(unittest.TestCase):
 
     def state_refresh(self):
         input_todo = self.driver.find_element_by_class_name("new-todo")
+        for x in range(1, 6):
+            input_todo.send_keys('test text ' + str(x))
+            input_todo.send_keys(Keys.ENTER)
+            
+        # check whats there
+        before_refresh = len(self.driver.find_elements(By.CLASS_NAME, 'toggle'))
+        # refresh page
+        self.driver.refresh()
+        # verify that the number remains the same.
+        post_refresh = len(self.driver.find_elements(By.CLASS_NAME, 'toggle'))
+        self.assertEqual(before_refresh, post_refresh)
+
+          # 'X item(s) left' section updates 
+    def items_left_counter(self):
+        input_todo = self.driver.find_element_by_class_name("new-todo")
+        for x in range(1, 4):
+            input_todo.send_keys('test text ' + str(x))
+            input_todo.send_keys(Keys.ENTER)
+            # I LEFT OFF: trying to locate the text of 'items left' to verify the number based on toggles
+        counter = self.driver.find_element(By.CLASS_NAME,'todo-count//*[text()=" items left"]')
+        print(counter)
+
+        # 'X item(s) left' section updates upon completed or incomplete amount of items
         
-
-    
-# ASSERTequals, one for each li 
-
 
 
 # WHY DOES CHROME CLOSE ON ITS OWN EVEN WHEN TEARDOWN ISN'T THERE? 
-    # def tearDown(self):
+    def tearDown(self):
+        sleep(15)
         # self.driver.implicitly_wait(15)	
-        # self.driver.quit()
+        self.driver.quit()
 
 if __name__ == '__main__':
     unittest.main()
@@ -84,8 +103,3 @@ if __name__ == '__main__':
 
 # Refactor TODO: 
     # switch out xpath for different selector
-
-#REMINDER
-# after one (1) hour of troubleshooting, branch, commit & @ Ben 
-# """&& @ BEN, I keep receiving this error: 
-#   """
