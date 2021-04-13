@@ -1,5 +1,5 @@
 # To Do MVC Selenium Test Suite
-##Purpose: 
+## Purpose: 
 This Python script is a regression test on the to-do app (https://todomvc.com/examples/angular2)
 
 ## Requirements: 
