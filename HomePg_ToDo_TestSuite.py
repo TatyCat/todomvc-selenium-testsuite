@@ -87,10 +87,9 @@ class ToDoMVCTest(unittest.TestCase):
         print(counter)
 
         # 'X item(s) left' section updates upon completed or incomplete amount of items
-        
+        # Accurate number of 'item(s) left' is displayed 
 
 
-# WHY DOES CHROME CLOSE ON ITS OWN EVEN WHEN TEARDOWN ISN'T THERE? 
     def tearDown(self):
         sleep(15)
         # self.driver.implicitly_wait(15)	
@@ -98,8 +97,3 @@ class ToDoMVCTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
-# Refactor TODO: 
-    # switch out xpath for different selector
