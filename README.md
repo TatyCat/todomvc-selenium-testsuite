@@ -17,8 +17,6 @@ This Python script is a regression test on a MVC to-do app (https://todomvc.com/
 - Activate the python enviroment (source todo-env/bin/activate) 
 
 
-
-
 ***	
 ### Personal Notes: 
 To ACTIVATE PYTHON ENV:
