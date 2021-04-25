@@ -77,6 +77,7 @@ class ToDoMVCTest(unittest.TestCase):
 
           
         # 'X item(s) left' section updates upon completed or incomplete amount of items. Accurate number of 'item(s) left' is displayed.
+        #Close Issue 9
     def items_left_counter(self):
         input_todo = self.driver.find_element_by_class_name("new-todo")
         for x in range(1, 4):
