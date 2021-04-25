@@ -11,7 +11,6 @@ from time import sleep
 
 class ToDoMVCTest(unittest.TestCase):
 
-   
     def setUp(self):    
         self.driver = webdriver.Chrome()
         self.driver.get('https://todomvc.com/examples/angular2/')
@@ -76,23 +75,31 @@ class ToDoMVCTest(unittest.TestCase):
         post_refresh = len(self.driver.find_elements(By.CLASS_NAME, 'toggle'))
         self.assertEqual(before_refresh, post_refresh)
 
-          # 'X item(s) left' section updates 
+          
+        # 'X item(s) left' section updates upon completed or incomplete amount of items. Accurate number of 'item(s) left' is displayed.
     def items_left_counter(self):
         input_todo = self.driver.find_element_by_class_name("new-todo")
         for x in range(1, 4):
             input_todo.send_keys('test text ' + str(x))
             input_todo.send_keys(Keys.ENTER)
-            # I LEFT OFF: trying to locate the text of 'items left' to verify the number based on toggles
-        counter = self.driver.find_element(By.CLASS_NAME,'todo-count//*[text()=" items left"]')
-        print(counter)
+        counter = self.driver.find_element(By.CLASS_NAME,'todo-count')
+        self.assertEqual(counter.text, "3 items left")
 
-        # 'X item(s) left' section updates upon completed or incomplete amount of items
-        # Accurate number of 'item(s) left' is displayed 
+        #change counter and verify counter updates. 
+        mark_complete = self.driver.find_element_by_xpath("/html/body/todo-app/section/section/ul/li/div/input")
+        mark_complete.click()
+        self.assertEqual(counter.text, "2 items left")
+        
+        #click input to mark incomplete and verify counter updates. 
+        mark_complete.click()
+        self.assertEqual(counter.text, "3 items left")
+
+
+            
 
 
     def tearDown(self):
-        sleep(15)
-        # self.driver.implicitly_wait(15)	
+        sleep(10)
         self.driver.quit()
 
 if __name__ == '__main__':
