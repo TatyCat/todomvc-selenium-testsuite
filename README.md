@@ -1,12 +1,13 @@
 # To Do MVC Selenium Test Suite
 ## Purpose: 
-This Python script is a regression test on the to-do app (https://todomvc.com/examples/angular2)
+This Python script is a regression test on a MVC to-do app (https://todomvc.com/examples/angular2)
 
-## Requirements: 
+## Requirements To Run Script: 
 <ol>
 <li>Python 3 </li>
 <li>Install Homebrew</li>
 <li>Install Selenium through Homebrew</li>
+</ol>
 
 ## How to Run: 
 - Save project folder.
