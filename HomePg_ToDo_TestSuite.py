@@ -113,7 +113,6 @@ class ToDoMVCTest(unittest.TestCase):
 
 
     def tearDown(self):
-        sleep(10)
         self.driver.quit()
 
 if __name__ == '__main__':
