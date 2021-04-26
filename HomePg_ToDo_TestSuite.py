@@ -146,15 +146,12 @@ class ToDoMVCTest(unittest.TestCase):
         edit_item.send_keys(Keys.ENTER)
 
         #verify that edit occured
-        # edited_li_text = self.driver.find_element_by_link_text('Edited List Item')
-        edited_li_text = self.driver.find_elements_by_css_selector('.view'[innerText='Edited List Item'])
-        
-
-        self.assertTrue(edited_li_text, 'Edited List Item')
+        edited_li_text = self.driver.find_element_by_css_selector('label').get_attribute("innerHTML")
+        self.assertEqual(edited_li_text, 'Edited List Item', 'Double Click to Edit test Failed')
         
 
     def tearDown(self):
-        sleep(3)
+        # sleep(3)
         self.driver.quit()
 
 if __name__ == '__main__':
