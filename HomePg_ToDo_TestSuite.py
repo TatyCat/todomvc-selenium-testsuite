@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By 
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 from time import sleep
@@ -129,18 +130,31 @@ class ToDoMVCTest(unittest.TestCase):
     def test_double_click_to_edit(self):
         input_todo = self.driver.find_element_by_class_name('new-todo')
         for x in range(0, 3):
-            input_todo.send_keys('test item ' + str(x))
+            input_todo.send_keys('test item ')
             input_todo.send_keys(Keys.ENTER)
 
         todo_item = self.driver.find_element_by_class_name('view')
-        ActionChains(self.driver).double_click(on_element=todo_item).perform()
+        double_click = ActionChains(self.driver).double_click(on_element=todo_item)
+        
+        double_click.perform()
+        edit_item = self.driver.find_element_by_class_name('edit')
+        edit_item.clear()
+        double_click.perform()
 
+        edit_item = self.driver.find_element_by_class_name('edit')
+        edit_item.send_keys('Edited List Item')
+        edit_item.send_keys(Keys.ENTER)
 
+        #verify that edit occured
+        # edited_li_text = self.driver.find_element_by_link_text('Edited List Item')
+        edited_li_text = self.driver.find_elements_by_css_selector('.view'[innerText='Edited List Item'])
+        
 
+        self.assertTrue(edited_li_text, 'Edited List Item')
         
 
     def tearDown(self):
-        sleep(10)
+        sleep(3)
         self.driver.quit()
 
 if __name__ == '__main__':
