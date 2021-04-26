@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By 
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.action_chains import ActionChains
 
 from time import sleep
 
@@ -18,13 +19,13 @@ class ToDoMVCTest(unittest.TestCase):
         #Wait until input box is available in DOM tree.
             # https://selenium-python.readthedocs.io/waits.html#explicit-waits
         try:
-            element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/todo-app/section/header/input")))
+            element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/todo-app/section/header/input')))
         except:
             self.driver.quit()
         
         #Add/type text in input box (not disabled) / #can submit added text to create a checklist item
     def test_text_in_input_box(self):
-        input_todo = self.driver.find_element_by_xpath("/html/body/todo-app/section/header/input")
+        input_todo = self.driver.find_element_by_xpath('/html/body/todo-app/section/header/input')
         input_todo.send_keys('test text')
         input_todo.send_keys(Keys.ENTER)
         self.driver.implicitly_wait(15)	
@@ -36,11 +37,11 @@ class ToDoMVCTest(unittest.TestCase):
         #checklist item can be marked complete by toggle:
     def test_mark_complete(self):
             # find toggle, mark toggle, check that it shows as complete 
-        input_todo = self.driver.find_element_by_xpath("/html/body/todo-app/section/header/input")
+        input_todo = self.driver.find_element_by_xpath('/html/body/todo-app/section/header/input')
         input_todo.send_keys('test text')
         input_todo.send_keys(Keys.ENTER)
 
-        toggle_check = self.driver.find_element_by_xpath("/html/body/todo-app/section/section/ul/li/div/input")
+        toggle_check = self.driver.find_element_by_xpath('/html/body/todo-app/section/section/ul/li/div/input')
 
         #verify not selected
         self.assertTrue(not toggle_check.is_selected())
@@ -54,10 +55,10 @@ class ToDoMVCTest(unittest.TestCase):
         input_todo = self.driver.find_element_by_class_name("new-todo")
         input_todo.send_keys('test completion text')
         input_todo.send_keys(Keys.ENTER)
-        mark_complete = self.driver.find_element_by_xpath("/html/body/todo-app/section/section/ul/li/div/input")
+        mark_complete = self.driver.find_element_by_xpath('/html/body/todo-app/section/section/ul/li/div/input')
         mark_complete.click()
         #check for item by 'complete' class name
-        completed_li = self.driver.find_element_by_class_name("completed")
+        completed_li = self.driver.find_element_by_class_name('completed')
         self.assertTrue(completed_li)
         
 
@@ -86,7 +87,7 @@ class ToDoMVCTest(unittest.TestCase):
         self.assertEqual(counter.text, "3 items left")
 
         #change counter and verify counter updates. 
-        mark_complete = self.driver.find_element_by_xpath("/html/body/todo-app/section/section/ul/li/div/input")
+        mark_complete = self.driver.find_element_by_xpath('/html/body/todo-app/section/section/ul/li/div/input')
         mark_complete.click()
         self.assertEqual(counter.text, "2 items left")
         
@@ -95,7 +96,7 @@ class ToDoMVCTest(unittest.TestCase):
         self.assertEqual(counter.text, "3 items left")
 
     def test_clear_button(self):
-        input_todo = self.driver.find_element_by_class_name("new-todo")
+        input_todo = self.driver.find_element_by_class_name('new-todo')
         for x in range(1, 5):
             input_todo.send_keys('test text ' + str(x))
             input_todo.send_keys(Keys.ENTER)
@@ -111,8 +112,28 @@ class ToDoMVCTest(unittest.TestCase):
         counter = self.driver.find_element(By.CLASS_NAME,'todo-count')
         self.assertEqual(counter.text, "2 items left")
 
+    def test_hover_to_remove(self):
+        input_todo = self.driver.find_element_by_class_name('new-todo')
+        for x in range(0, 3):
+            input_todo.send_keys('test item ' + str(x))
+            input_todo.send_keys(Keys.ENTER)
+            
+        li_to_hover = self.driver.find_element_by_xpath('/html/body/todo-app/section/section/ul/li[1]/div/input')
+
+        hover_action = ActionChains(self.driver).move_to_element(li_to_hover)
+
+        x_destroy_element = self.driver.find_element_by_class_name('destroy')
+
+        hover_action.perform()
+        x_destroy_element.click()
+
+        counter = self.driver.find_element(By.CLASS_NAME,'todo-count')
+        self.assertEqual(counter.text, "2 items left")
+           
+
 
     def tearDown(self):
+        sleep(10)
         self.driver.quit()
 
 if __name__ == '__main__':
