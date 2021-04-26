@@ -61,7 +61,7 @@ class ToDoMVCTest(unittest.TestCase):
         self.assertTrue(completed_li)
         
 
-    def state_refresh(self):
+    def test_state_refresh(self):
         input_todo = self.driver.find_element_by_class_name("new-todo")
         for x in range(1, 6):
             input_todo.send_keys('test text ' + str(x))
@@ -77,8 +77,7 @@ class ToDoMVCTest(unittest.TestCase):
 
           
         # 'X item(s) left' section updates upon completed or incomplete amount of items. Accurate number of 'item(s) left' is displayed.
-        #Close Issue 9
-    def items_left_counter(self):
+    def test_items_left_counter(self):
         input_todo = self.driver.find_element_by_class_name("new-todo")
         for x in range(1, 4):
             input_todo.send_keys('test text ' + str(x))
@@ -95,8 +94,22 @@ class ToDoMVCTest(unittest.TestCase):
         mark_complete.click()
         self.assertEqual(counter.text, "3 items left")
 
+    def test_clear_button(self):
+        input_todo = self.driver.find_element_by_class_name("new-todo")
+        for x in range(1, 5):
+            input_todo.send_keys('test text ' + str(x))
+            input_todo.send_keys(Keys.ENTER)
 
-            
+        toggle_complete1 = self.driver.find_element_by_xpath('/html/body/todo-app/section/section/ul/li[1]/div/input')
+        toggle_complete2 = self.driver.find_element_by_xpath('/html/body/todo-app/section/section/ul/li[2]/div/input')
+        toggle_complete1.click()
+        toggle_complete2.click()
+
+        clear_completed = self.driver.find_element_by_class_name('clear-completed')
+        clear_completed.click()
+        #Verify that two items remain
+        counter = self.driver.find_element(By.CLASS_NAME,'todo-count')
+        self.assertEqual(counter.text, "2 items left")
 
 
     def tearDown(self):
