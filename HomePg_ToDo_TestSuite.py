@@ -52,7 +52,7 @@ class ToDoMVCTest(unittest.TestCase):
         self.assertTrue(toggle_check.is_selected())
     
     def test_completion_style_format(self):
-        input_todo = self.driver.find_element_by_class_name("new-todo")
+        input_todo = self.driver.find_element_by_class_name('new-todo')
         input_todo.send_keys('test completion text')
         input_todo.send_keys(Keys.ENTER)
         mark_complete = self.driver.find_element_by_xpath('/html/body/todo-app/section/section/ul/li/div/input')
@@ -63,7 +63,7 @@ class ToDoMVCTest(unittest.TestCase):
         
 
     def test_state_refresh(self):
-        input_todo = self.driver.find_element_by_class_name("new-todo")
+        input_todo = self.driver.find_element_by_class_name('new-todo')
         for x in range(1, 6):
             input_todo.send_keys('test text ' + str(x))
             input_todo.send_keys(Keys.ENTER)
@@ -119,18 +119,25 @@ class ToDoMVCTest(unittest.TestCase):
             input_todo.send_keys(Keys.ENTER)
             
         li_to_hover = self.driver.find_element_by_xpath('/html/body/todo-app/section/section/ul/li[1]/div/input')
-
-        hover_action = ActionChains(self.driver).move_to_element(li_to_hover)
-
+        ActionChains(self.driver).move_to_element(li_to_hover).perform()
         x_destroy_element = self.driver.find_element_by_class_name('destroy')
-
-        hover_action.perform()
         x_destroy_element.click()
-
-        counter = self.driver.find_element(By.CLASS_NAME,'todo-count')
+        #verify test removed li 
+        counter = self.driver.find_element_by_class_name('todo-count')
         self.assertEqual(counter.text, "2 items left")
            
+    def test_double_click_to_edit(self):
+        input_todo = self.driver.find_element_by_class_name('new-todo')
+        for x in range(0, 3):
+            input_todo.send_keys('test item ' + str(x))
+            input_todo.send_keys(Keys.ENTER)
 
+        todo_item = self.driver.find_element_by_class_name('view')
+        ActionChains(self.driver).double_click(on_element=todo_item).perform()
+
+
+
+        
 
     def tearDown(self):
         sleep(10)
