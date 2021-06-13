@@ -9,9 +9,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
-from time import sleep
-
-class ToDoMVCTest(unittest.TestCase):
+class TestToDoMVC(unittest.TestCase):
 
     def setUp(self):    
         self.driver = webdriver.Chrome()
@@ -37,7 +35,7 @@ class ToDoMVCTest(unittest.TestCase):
 
         #checklist item can be marked complete by toggle:
     def test_mark_complete(self):
-            # find toggle, mark toggle, check that it shows as complete 
+        # find toggle, mark toggle, check that it shows as complete 
         input_todo = self.driver.find_element_by_xpath('/html/body/todo-app/section/header/input')
         input_todo.send_keys('test text')
         input_todo.send_keys(Keys.ENTER)
@@ -123,7 +121,7 @@ class ToDoMVCTest(unittest.TestCase):
         ActionChains(self.driver).move_to_element(li_to_hover).perform()
         x_destroy_element = self.driver.find_element_by_class_name('destroy')
         x_destroy_element.click()
-        #verify test removed li 
+        #verify test removed the li 
         counter = self.driver.find_element_by_class_name('todo-count')
         self.assertEqual(counter.text, "2 items left")
            
@@ -151,7 +149,6 @@ class ToDoMVCTest(unittest.TestCase):
         
 
     def tearDown(self):
-        # sleep(3)
         self.driver.quit()
 
 if __name__ == '__main__':
