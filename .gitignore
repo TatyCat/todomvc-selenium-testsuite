@@ -147,6 +147,5 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# pip packaging
-
-AFAICT https://github.com/TatyCat/todomvc-selenium-testsuite/issues/1
+# DS_Store
+.DS_Store
