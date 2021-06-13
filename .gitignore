@@ -1,4 +1,7 @@
+# Ignore todo env file 
 todo-env/
+**todo-env/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -10,6 +13,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+env/
 build/
 develop-eggs/
 dist/
@@ -26,6 +30,10 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+/build/
+/dist/
+*.eggs
+*.egg-info/
 MANIFEST
 
 # PyInstaller
@@ -139,4 +147,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-pip
+# pip packaging
+
+AFAICT https://github.com/TatyCat/todomvc-selenium-testsuite/issues/1
