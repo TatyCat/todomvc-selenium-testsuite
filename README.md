@@ -35,6 +35,8 @@ Solution: Update/Install Selenium - Webdriver
 
 Pro Bash tip: <!-- *history* shows last used commands-->
 
-To run independent methods/test:
-    python HomePg_ToDo_TestSuite.py ToDoMVCTest.test_mark_complete 
+To run independent methods/test: python [fileName] [className.testName]
+    Examples: 
+    - python HomePg_ToDo_TestSuite.py ToDoMVCTest.test_mark_complete 
+    - python test_todomvc.py TestToDoMVC.test_put__text_in_input_box 
 
